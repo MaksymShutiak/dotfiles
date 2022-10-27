@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "module": "commonjs",
+    "target": "es5",
+    "sourceMap": true,
+    "allowJs": true,
+    "jsx": "preserve",
+    "paths": {
+      "@/*": ["src/*"],
+      "h/*": ["tests/helpers/*"],
+      "f/*": ["tests/factories/*"]
+    },
+    "outDir": "dist",
+    "newLine": "LF",
+    "useDefineForClassFields": false,
+    "moduleResolution": "node",
+    "strict": true,
+    "noUnusedLocals": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "removeComments": false,
+    "lib": ["esnext", "dom"],
+    "types": ["jest", "puppeteer", "node"],
+    "rootDir": "."
+
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "vueCompilerOptions": {
+    "target": 2.7
+  } 
+}
