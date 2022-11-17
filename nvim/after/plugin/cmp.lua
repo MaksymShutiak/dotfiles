@@ -7,6 +7,7 @@ local saga = require'lspsaga'
 local cmp = require'cmp'
 local luasnip = require'luasnip'
 local snipmate = require'luasnip.loaders.from_snipmate'
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 
 local has_words_before = function()
   local line, col = unpack(api.nvim_win_get_cursor(0))
@@ -108,6 +109,10 @@ cmp.setup.cmdline(':', {
   })
 })
 
+cmp.event:on(
+  'confirm_done',
+  cmp_autopairs.on_confirm_done()
+)
 -- Set up lspconfig.
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 

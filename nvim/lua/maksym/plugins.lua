@@ -52,4 +52,5 @@ return require('packer').startup(function(use)
   -- LSP Autocompletition --
 
   use 'mattn/emmet-vim'
+  use 'tpope/vim-surround'
 end)
