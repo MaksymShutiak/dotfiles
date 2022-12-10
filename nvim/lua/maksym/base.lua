@@ -46,6 +46,9 @@ opt.inccommand = 'split'
 opt.smarttab = true
 opt.breakindent = true
 
+opt.hidden = true
+opt.undofile = true
+opt.updatetime = 520
 cmd("autocmd!")
 
 autocmd("FileType", {

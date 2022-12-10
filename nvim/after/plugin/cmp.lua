@@ -136,15 +136,14 @@ require'lspconfig'.jsonls.setup {
   capabilities = capabilities,
 }
 
+require'lspconfig'.eslint.setup{}
+
 require'lspconfig'.volar.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
 }
 
-require'lspconfig'.eslint.setup{}
-
-require('lspconfig').tsserver.setup {
+require'lspconfig'.tsserver.setup {
   on_attach = on_attach,
   capabilities = capabilities,
 }
