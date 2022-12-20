@@ -50,7 +50,7 @@ return require('packer').startup(function(use)
   use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
   -- LSP Autocompletition --
-  
+
   -- Code completition -- 
   use 'mattn/emmet-vim'
   use 'tpope/vim-surround'
