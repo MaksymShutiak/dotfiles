@@ -53,7 +53,6 @@ opt.swapfile = false
 opt.iskeyword:append("_")
 
 cmd("autocmd!")
-
 autocmd("FileType", {
   pattern = 'css',
   command = "set filetype=scss"
