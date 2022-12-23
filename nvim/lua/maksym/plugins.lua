@@ -11,6 +11,7 @@ return require('packer').startup(function(use)
   -- File Explorer 
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-file-browser.nvim'
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   -- File Explorer 
 
   -- File Tree -- 
@@ -54,5 +55,5 @@ return require('packer').startup(function(use)
   -- Code completition -- 
   use 'mattn/emmet-vim'
   use 'tpope/vim-surround'
-  use 'tpope/vim-commentary'
+  use 'numToStr/Comment.nvim'
 end)

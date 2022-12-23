@@ -49,6 +49,13 @@ local function toggle_unit_test ()
   end
 end
 
+
+local builtin = require('telescope.builtin')
+keymap.set('n', '<leader>ff', builtin.find_files, {})
+keymap.set('n', '<leader>fg', builtin.live_grep, {})
+keymap.set('n', '<leader>fb', builtin.buffers, {})
+keymap.set('n', '<leader>fh', builtin.help_tags, {})
+keymap.set('n', '<leader>fr', builtin.quickfix, {})
 keymap.set('n', '<Leader>tt', '<cmd>NvimTreeToggle<CR>', bufopts)
 keymap.set('n', '<Leader>tf', '<cmd>NvimTreeFindFile<CR>', bufopts)
 keymap.set('n', '<Leader>ef', '<cmd>ALEFix eslint<CR>', bufopts)

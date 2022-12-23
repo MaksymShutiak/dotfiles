@@ -114,7 +114,7 @@ cmp.event:on(
   cmp_autopairs.on_confirm_done()
 )
 -- Set up lspconfig.
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 require'lspconfig'.cssls.setup {
   on_attach = on_attach,
