@@ -49,6 +49,9 @@ opt.breakindent = true
 opt.hidden = true
 opt.undofile = true
 opt.updatetime = 100
+opt.swapfile = false
+opt.iskeyword:append("_")
+
 cmd("autocmd!")
 
 autocmd("FileType", {
