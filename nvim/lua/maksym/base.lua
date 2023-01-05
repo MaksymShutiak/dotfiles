@@ -10,6 +10,7 @@ global.guifont = "DroidSansMono_Nerd_Font:h11"
 opt.background = "dark"
 opt.signcolumn = "yes"
 
+opt.completeopt:append { 'menu', 'menuone', 'noselect'  }
 -- line settings 
 opt.number = true
 opt.relativenumber = true

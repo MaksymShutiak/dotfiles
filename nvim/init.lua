@@ -1,4 +1,5 @@
 require('maksym.plugins')
 require('maksym.base')
 require('maksym.keymaps')
-require('maksym.globals.emmet-vim')
+vim.lsp.set_log_level("debug")
+
