@@ -25,7 +25,10 @@ return require('packer').startup(function(use)
   -- Status Line --
 
   -- Syntax highlight --
-  use 'nvim-treesitter/nvim-treesitter'
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate'
+  }
   -- Syntax highlight --
 
   -- Git --
