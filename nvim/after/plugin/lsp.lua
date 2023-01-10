@@ -44,14 +44,18 @@ require'lspconfig'.jsonls.setup {
 require'lspconfig'.eslint.setup{}
 
 require'lspconfig'.volar.setup {
+  on_attach = on_attach,
   filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'},
+  init_options = {
+    typescript = {
+      tsdk = vim.fn.expand('$HOME/.nvm/versions/node/v19.4.0/lib/node_modules/typescript/lib')
+    },
+  },
+}
+
+require'lspconfig'.tsserver.setup {
   on_attach = on_attach,
   capabilities = capabilities,
 }
-
--- require'lspconfig'.tsserver.setup {
---   on_attach = on_attach,
---   capabilities = capabilities,
--- }
 
 require'lspconfig'.sumneko_lua.setup {}
