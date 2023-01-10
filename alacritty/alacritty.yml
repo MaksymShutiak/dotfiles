@@ -13,7 +13,7 @@
 # set by alacritty itself.
 
 import: 
- - ~/.config/alacritty/tokyonight_moon.yml
+ - ~/.config/alacritty/dracula.yml
 
 #env:
   # TERM variable
