@@ -5,4 +5,5 @@ iterm2
 gh
 configstore
 node_modules
+packer_compiled.lua
 memos.json
