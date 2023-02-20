@@ -36,7 +36,6 @@ end
 --     disable_in_visualblock = false,
 --     ---@usage  change default fast_wrap
 --     fast_wrap = {
---       map = "<M-e>",
 --       chars = { "{", "[", "(", '"', "'" },
 --       pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], "%s+", ""),
 --       offset = 0, -- Offset from pattern match
@@ -47,4 +46,6 @@ end
 --       highlight_grey = "Comment",
 --     },
 -- }
-autopairs.setup {}
+autopairs.setup {
+  fast_wrap = {},
+}
