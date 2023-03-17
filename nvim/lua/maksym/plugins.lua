@@ -3,6 +3,7 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'nvim-lua/plenary.nvim'
+  use "williamboman/mason.nvim"
 
   -- Dev icons --
   use 'kyazdani42/nvim-web-devicons'
@@ -37,25 +38,26 @@ return require('packer').startup(function(use)
   -- Git --
 
   -- Theme --  
-  -- use 'morhetz/gruvbox'
   use 'folke/tokyonight.nvim'
   -- Theme -- 
 
   -- Editor --
   use 'windwp/nvim-autopairs'
+  use 'windwp/nvim-ts-autotag'
   -- Editor --
 
   -- LSP Autocompletition --
-  use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
-  use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
+  use 'neovim/nvim-lspconfig' -- LSP settings collection 
+  use 'hrsh7th/nvim-cmp' -- LSP autocompletion plugin
   use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
-  use 'L3MON4D3/LuaSnip' -- Snippets plugin
-  use 'saadparwaiz1/cmp_luasnip'
-  use 'rafamadriz/friendly-snippets'
+  use 'L3MON4D3/LuaSnip' -- LSP snipets source
+  use 'saadparwaiz1/cmp_luasnip' -- Snippets engine
+  use 'rafamadriz/friendly-snippets' -- Snipets 
   -- LSP Autocompletition --
 
   -- Code completition -- 
-  use 'mattn/emmet-vim'
   use 'tpope/vim-surround'
   use 'numToStr/Comment.nvim'
+  use 'jose-elias-alvarez/null-ls.nvim'
+  -- Code completition -- 
 end)

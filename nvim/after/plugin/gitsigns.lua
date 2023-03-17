@@ -1,7 +1,7 @@
 local status, gitsigns = pcall(require, 'gitsigns')
 
 if not status then
-  print("Gitsigns is not loaded or installed . Please check configuration file")
+  print('Gitsigns is not loaded or installed . Please check configuration file')
 end
 
 gitsigns.setup{

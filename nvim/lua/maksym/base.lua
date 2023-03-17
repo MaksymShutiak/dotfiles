@@ -1,60 +1,62 @@
-local opt = vim.opt
+local options = vim.opt
 local global = vim.g
 local autocmd = vim.api.nvim_create_autocmd
-local cmd = vim.cmd
+local command = vim.cmd
 
 -- gui
 global.termguicolors = true
-global.guifont = "DroidSansMono_Nerd_Font:h11"
+global.guifont = 'DroidSansMono_Nerd_Font:h11'
 
-opt.background = "dark"
-opt.signcolumn = "yes"
+options.background = 'dark'
+options.signcolumn = 'yes'
 
-opt.completeopt:append { 'menu', 'menuone', 'noselect'  }
+options.completeopt:append { 'menu', 'menuone', 'noselect'  }
 -- line settings 
-opt.number = true
-opt.relativenumber = true
-opt.wrap = false
+options.number = true
+options.relativenumber = true
+options.wrap = false
 
 -- tabs and indents 
-opt.expandtab = true
-opt.autoindent = true
-opt.shiftwidth = 2
-opt.tabstop = 2
+options.expandtab = true
+options.autoindent = true
+options.shiftwidth = 2
+options.tabstop = 2
 
 -- search
-opt.hlsearch = true
-opt.ignorecase = true
-opt.smartcase = true
+options.hlsearch = true
+options.ignorecase = true
+options.smartcase = true
 
 -- clipboard
-opt.clipboard:append { 'unnamedplus' }
+options.clipboard:append { 'unnamedplus' }
 
 
 -- split windows
-opt.splitright = true
-opt.splitbelow = true
+options.splitright = true
+options.splitbelow = true
 
 -- cursorline
-opt.cursorline = true
+options.cursorline = true
 
-opt.smartindent = true
-opt.backup = false
-opt.showcmd = true
-opt.laststatus = 2
-opt.scrolloff = 10
-opt.inccommand = 'split'
-opt.smarttab = true
-opt.breakindent = true
+options.smartindent = true
+options.backup = false
+options.showcmd = true
+options.laststatus = 2
+options.scrolloff = 10
+options.inccommand = 'split'
+options.smarttab = true
+options.breakindent = true
 
-opt.hidden = true
-opt.undofile = true
-opt.updatetime = 100
-opt.swapfile = false
-opt.iskeyword:append("_")
+options.hidden = true
+options.undofile = true
+options.updatetime = 100
+options.swapfile = false
+options.iskeyword:append('_')
+options.completeopt = {'menu', 'menuone', 'noselect'}
+options.iskeyword:append({'-', '_'})
 
-cmd("autocmd!")
-autocmd("FileType", {
+command('autocmd!')
+autocmd('FileType', {
   pattern = 'css',
-  command = "set filetype=scss"
+  command = 'set filetype=scss'
 })

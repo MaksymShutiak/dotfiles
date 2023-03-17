@@ -1,4 +1,4 @@
-local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -18,7 +18,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+  vim.keymap.set('n', '<space>f', vim.lsp.buf.format, bufopts)
 end
 
 require'lspconfig'.cssls.setup {
@@ -36,17 +36,21 @@ require'lspconfig'.html.setup {
   capabilities = capabilities,
 }
 
-require'lspconfig'.jsonls.setup {
+require'lspconfig'.eslint.setup {
   on_attach = on_attach,
   capabilities = capabilities,
 }
 
-require'lspconfig'.eslint.setup{}
-
 require'lspconfig'.volar.setup {
   on_attach = on_attach,
+  capabilities = capabilities,
   filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'},
   init_options = {
+    settings = {
+      css = {
+        validate = false,
+      },
+    },
     typescript = {
       tsdk = vim.fn.expand('$HOME/.nvm/versions/node/v19.4.0/lib/node_modules/typescript/lib')
     },
@@ -58,3 +62,4 @@ require'lspconfig'.tsserver.setup {
   capabilities = capabilities,
 }
 
+require'lspconfig'.lua_ls.setup {}
