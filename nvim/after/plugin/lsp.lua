@@ -1,4 +1,6 @@
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local capabilitiesForEmmet = vim.lsp.protocol.make_client_capabilities()
+capabilitiesForEmmet.textDocument.completion.completionItem.snippetSupport = true
 
 local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -35,6 +37,22 @@ require'lspconfig'.html.setup {
   on_attach = on_attach,
   capabilities = capabilities,
 }
+
+require'lspconfig'.cssls.setup{
+  capabilities = capabilities,
+}
+
+require'lspconfig'.emmet_ls.setup({
+    capabilities = capabilitiesForEmmet,
+    filetypes = { "css", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact"},
+    init_options = {
+      html = {
+        options = {
+          ["bem.enabled"] = true,
+        },
+      },
+    }
+})
 
 require'lspconfig'.eslint.setup {
   on_attach = on_attach,

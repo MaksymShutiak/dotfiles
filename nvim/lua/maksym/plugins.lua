@@ -19,7 +19,7 @@ return require('packer').startup(function(use)
   use 'nvim-tree/nvim-tree.lua'
   -- File Tree --
 
-  use({'glepnir/lspsaga.nvim', branch = 'main' })
+  use {'glepnir/lspsaga.nvim', branch = 'main' }
 
   -- Status line --
   use 'nvim-lualine/lualine.nvim'
@@ -59,5 +59,9 @@ return require('packer').startup(function(use)
   use 'tpope/vim-surround'
   use 'numToStr/Comment.nvim'
   use 'jose-elias-alvarez/null-ls.nvim'
+  use 'mattn/emmet-vim'
   -- Code completition -- 
+  --
+  --
+  use 'glepnir/dashboard-nvim'
 end)
