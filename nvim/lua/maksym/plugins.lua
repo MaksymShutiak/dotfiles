@@ -16,7 +16,12 @@ return require('packer').startup(function(use)
   -- File Explorer 
 
   -- File Tree -- 
-  use 'nvim-tree/nvim-tree.lua'
+  use {
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons', -- optional
+    },
+  }
   -- File Tree --
 
   use {'glepnir/lspsaga.nvim', branch = 'main' }
@@ -61,7 +66,4 @@ return require('packer').startup(function(use)
   use 'jose-elias-alvarez/null-ls.nvim'
   use 'mattn/emmet-vim'
   -- Code completition -- 
-  --
-  --
-  use 'glepnir/dashboard-nvim'
 end)

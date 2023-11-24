@@ -3,6 +3,7 @@ git
 htop
 iterm2
 gh
+jgit
 configstore
 node_modules
 packer_compiled.lua

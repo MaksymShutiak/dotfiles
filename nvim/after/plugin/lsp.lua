@@ -2,28 +2,33 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local capabilitiesForEmmet = vim.lsp.protocol.make_client_capabilities()
 capabilitiesForEmmet.textDocument.completion.completionItem.snippetSupport = true
 
+local lspconfig = require'lspconfig'
+local keymap = vim.keymap
+local inspect = vim.inspect
+local buffer = vim.lsp.buf
+
 local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  local bufopts = { noremap=true, silent=true, buffer=bufnr }
-  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-  vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-  vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-  vim.keymap.set('n', '<space>wl', function()
-    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, bufopts)
-  vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-  vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-  vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', '<space>f', vim.lsp.buf.format, bufopts)
+  local buf_options = { noremap=true, silent=true, buffer=bufnr }
+  keymap.set('n', 'gD', buffer.declaration, buf_options)
+  keymap.set('n', 'gd', buffer.definition, buf_options)
+  keymap.set('n', 'K', buffer.hover, buf_options)
+  keymap.set('n', 'gi', buffer.implementation, buf_options)
+  keymap.set('n', '<C-k>', buffer.signature_help, buf_options)
+  keymap.set('n', '<space>wa', buffer.add_workspace_folder, buf_options)
+  keymap.set('n', '<space>wr', buffer.remove_workspace_folder, buf_options)
+  keymap.set('n', '<space>wl', function()
+    print(inspect(buffer.list_workspace_folders()))
+  end, buf_options)
+  keymap.set('n', '<space>D', buffer.type_definition, buf_options)
+  keymap.set('n', '<space>rn', buffer.rename, buf_options)
+  keymap.set('n', '<space>ca', buffer.code_action, buf_options)
+  keymap.set('n', 'gr', buffer.references, buf_options)
+  keymap.set('n', '<space>f', buffer.format, buf_options)
 end
 
-require'lspconfig'.cssls.setup {
+lspconfig.cssls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   settings = {
@@ -33,16 +38,16 @@ require'lspconfig'.cssls.setup {
   }
 }
 
-require'lspconfig'.html.setup {
+lspconfig.html.setup {
   on_attach = on_attach,
   capabilities = capabilities,
 }
 
-require'lspconfig'.cssls.setup{
+lspconfig.cssls.setup{
   capabilities = capabilities,
 }
 
-require'lspconfig'.emmet_ls.setup({
+lspconfig.emmet_ls.setup({
     capabilities = capabilitiesForEmmet,
     filetypes = { "css", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact"},
     init_options = {
@@ -54,12 +59,12 @@ require'lspconfig'.emmet_ls.setup({
     }
 })
 
-require'lspconfig'.eslint.setup {
+lspconfig.eslint.setup {
   on_attach = on_attach,
   capabilities = capabilities,
 }
 
-require'lspconfig'.volar.setup {
+lspconfig.volar.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'},
@@ -70,14 +75,14 @@ require'lspconfig'.volar.setup {
       },
     },
     typescript = {
-      tsdk = vim.fn.expand('$HOME/.nvm/versions/node/v19.4.0/lib/node_modules/typescript/lib')
+      tsdk = vim.fn.expand('$HOME/.nvm/versions/node/v20.5.1/lib/node_modules/typescript/lib')
     },
   },
 }
 
-require'lspconfig'.tsserver.setup {
+lspconfig.tsserver.setup {
   on_attach = on_attach,
   capabilities = capabilities,
 }
 
-require'lspconfig'.lua_ls.setup {}
+lspconfig.lua_ls.setup {}

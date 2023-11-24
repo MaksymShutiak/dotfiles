@@ -19,7 +19,24 @@
         "serializer",
         "userpilot",
         "vuex",
-        "stylelintignore"
+        "keymap",
+        "pinia",
+        "omnifunc",
+        "nvmrc",
+        "stylelintignore",
+        "cssls",
+        "gitsigns",
+        "autopairs",
+        "ts",
+        "autotag",
+        "tokyonight",
+        "treesitter",
+        "keymaps",
+        "nvim",
+        "maksym",
+        "lspconfig",
+        "lua",
+        "lualine"
     ],
     // flagWords - list of words to be always considered incorrect
     // This is useful for offensive words and common spelling errors.
