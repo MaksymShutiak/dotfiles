@@ -10,11 +10,11 @@ global.guifont = 'DroidSansMono_Nerd_Font:h11'
 options.background = 'dark'
 options.signcolumn = 'yes'
 
+options.completeopt:append { 'menu', 'menuone', 'noselect'  }
 -- line settings 
 options.number = true
 options.relativenumber = true
 options.wrap = false
-options.autoread = true
 
 -- tabs and indents 
 options.expandtab = true
@@ -51,6 +51,7 @@ options.hidden = true
 options.undofile = true
 options.updatetime = 100
 options.swapfile = false
+options.iskeyword:append('_')
 options.completeopt = {'menu', 'menuone', 'noselect'}
 options.iskeyword:append({'-', '_'})
 
@@ -58,9 +59,4 @@ command('autocmd!')
 autocmd('FileType', {
   pattern = 'css',
   command = 'set filetype=scss'
-})
-
-autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
-  command = "if mode() != 'c' | checktime | endif",
-  pattern = { "*" },
 })
