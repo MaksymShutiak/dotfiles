@@ -8,4 +8,5 @@ configstore
 node_modules
 packer_compiled.lua
 memos.json
+/snippets/
 /autodesk/

@@ -1,22 +1,17 @@
 local options = vim.opt
 local global = vim.g
-local autocmd = vim.api.nvim_create_autocmd
-local command = vim.cmd
 
--- gui
 global.termguicolors = true
-global.guifont = 'DroidSansMono_Nerd_Font:h11'
+options.signcolumn = "yes"
+-- gui
 
-options.background = 'dark'
-options.signcolumn = 'yes'
-
--- line settings 
+-- line settings
 options.number = true
 options.relativenumber = true
 options.wrap = false
 options.autoread = true
 
--- tabs and indents 
+-- tabs and indents
 options.expandtab = true
 options.autoindent = true
 options.shiftwidth = 2
@@ -28,8 +23,7 @@ options.ignorecase = true
 options.smartcase = true
 
 -- clipboard
-options.clipboard:append { 'unnamedplus' }
-
+options.clipboard:append({ "unnamedplus" })
 
 -- split windows
 options.splitright = true
@@ -43,7 +37,7 @@ options.backup = false
 options.showcmd = true
 options.laststatus = 2
 options.scrolloff = 10
-options.inccommand = 'split'
+options.inccommand = "split"
 options.smarttab = true
 options.breakindent = true
 
@@ -51,16 +45,5 @@ options.hidden = true
 options.undofile = true
 options.updatetime = 100
 options.swapfile = false
-options.completeopt = {'menu', 'menuone', 'noselect'}
-options.iskeyword:append({'-', '_'})
-
-command('autocmd!')
-autocmd('FileType', {
-  pattern = 'css',
-  command = 'set filetype=scss'
-})
-
-autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
-  command = "if mode() != 'c' | checktime | endif",
-  pattern = { "*" },
-})
+options.completeopt = { "menu", "menuone", "noselect" }
+options.iskeyword:append({ "-", "_" })

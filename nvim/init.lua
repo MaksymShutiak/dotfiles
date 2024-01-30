@@ -1,99 +1,73 @@
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
-local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system {
-    'git',
-    'clone',
-    '--filter=blob:none',
-    'https://github.com/folke/lazy.nvim.git',
-    '--branch=stable', -- latest stable release
-    lazypath,
-  }
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
 end
+
 vim.opt.rtp:prepend(lazypath)
 
-require('lazy').setup({
-  'wbthomason/packer.nvim',
-  'nvim-lua/plenary.nvim',
-  "williamboman/mason.nvim",
-
-  -- Dev icons --
-  'kyazdani42/nvim-web-devicons',
-  -- Dev icons --
-
-  -- File Explorer 
-  'nvim-telescope/telescope.nvim',
-  'nvim-telescope/telescope-file-browser.nvim',
-  {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
-  -- File Explorer 
-
-  -- File Tree -- 
-  {
-    'nvim-tree/nvim-tree.lua',
-    requires = {
-      'nvim-tree/nvim-web-devicons', -- optional
-    },
-  },
-  -- File Tree --
-
-  {'glepnir/lspsaga.nvim', branch = 'main' },
-
-  -- Status line --
-  'nvim-lualine/lualine.nvim',
-  -- Status Line --
-
-  -- Syntax highlight --
-  {
-    'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate'
-  },
-  -- Syntax highlight --
-
-  -- Git --
-  'tpope/vim-fugitive',
-  'tpope/vim-rhubarb',
-  'tpope/vim-sleuth',
-  'lewis6991/gitsigns.nvim',
-  -- Git --
-
-  -- Theme --  
-  'folke/tokyonight.nvim',
-  -- Theme -- 
-
-  -- Editor --
-  'windwp/nvim-autopairs',
-  'windwp/nvim-ts-autotag',
-  -- Editor --
-
-  -- LSP Autocompletition --
-  'hrsh7th/nvim-cmp', -- LSP autocompletion plugin
-  'neovim/nvim-lspconfig',
-  'SirVer/ultisnips',
-  'quangnguyen30192/cmp-nvim-ultisnips',
-  'hrsh7th/cmp-nvim-lsp', -- LSP source for nvim-cmp
-  -- LSP Autocompletition --
-
-  -- Code completition -- 
-  'tpope/vim-surround',
-  'numToStr/Comment.nvim',
-  'jose-elias-alvarez/null-ls.nvim',
-  'mattn/emmet-vim',
-  -- Code completition -- 
+require("lazy").setup({
+	spec = {
+		-- add LazyVim and import its plugins
+		{
+			"LazyVim/LazyVim",
+			import = "lazyvim.plugins",
+			opts = {
+				colorscheme = "tokyonight",
+				news = {
+					lazyvim = true,
+					neovim = true,
+				},
+			},
+		},
+		{ import = "lazyvim.plugins.extras.linting.eslint" },
+		{ import = "lazyvim.plugins.extras.lsp.none-ls" },
+		-- import any extras modules here
+		-- { import = "lazyvim.plugins.extras.lang.typescript" },
+		-- { import = "lazyvim.plugins.extras.lang.json" },
+		-- { import = "lazyvim.plugins.extras.ui.mini-animate" },
+		-- import/override with your plugins
+		{ import = "plugins" },
+	},
+	defaults = {
+		-- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
+		-- If you know what you're doing, you can set this to `true` to have all your custom plugins lazy-loaded by default.
+		lazy = false,
+		-- It's recommended to leave version=false for now, since a lot the plugin that support versioning,
+		-- have outdated releases, which may break your Neovim install.
+		version = false, -- always use the latest git commit
+		-- version = "*", -- try installing the latest stable version for plugins that support semver
+	},
+	install = { colorscheme = { "tokyonight" } },
+	checker = { enabled = true }, -- automatically check for plugin updates
+	performance = {
+		rtp = {
+			-- disable some rtp plugins
+			disabled_plugins = {
+				"gzip",
+				-- "matchit",
+				-- "matchparen",
+				-- "netrwPlugin",
+				"tarPlugin",
+				"tohtml",
+				"tutor",
+				"zipPlugin",
+			},
+		},
+	},
+}, {
+	"nvim-lua/plenary.nvim",
+	"nvim-tree/nvim-web-devicons",
+	"folke/neoconf.nvim",
+	"folke/neodev.nvim",
+	"williamboman/mason.nvim",
 })
 
-require('maksym.base')
-require('maksym.keymaps')
-require('maksym.cmp')
-require('maksym.comment')
-require('maksym.gitsigns')
-require('maksym.lsp')
-require('maksym.lualine')
-require('maksym.mason')
-require('maksym.nvim-autopairs')
-require('maksym.nvim-tree')
-require('maksym.nvim-ts-autotag')
-require('maksym.telescope')
-require('maksym.tokyonight')
-require('maksym.treesitter')
-require('maksym.web-dev-icons')
---
+require("config.cmds")
