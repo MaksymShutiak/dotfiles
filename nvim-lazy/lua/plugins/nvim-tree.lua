@@ -1,8 +1,5 @@
 return {
 	"nvim-tree/nvim-tree.lua",
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-  },
 
 	opts = {
 		sort_by = "case_sensitive",

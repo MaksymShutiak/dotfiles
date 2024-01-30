@@ -22,6 +22,9 @@ options.hlsearch = true
 options.ignorecase = true
 options.smartcase = true
 
+options.grepformat = "%f:%l:%c:%m"
+options.grepprg = "rg --vimgrep"
+
 -- clipboard
 options.clipboard:append({ "unnamedplus" })
 
