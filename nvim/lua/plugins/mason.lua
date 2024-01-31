@@ -13,7 +13,7 @@ return {
             local lspconfig = require("lspconfig")
 
             require("mason-lspconfig").setup({
-              ensure_installed = { "volar", "tsserver", "lua_ls", "eslint" },
+              ensure_installed = { "volar", "tsserver", "lua_ls", "eslint", "cssls", "emmet_language_server" },
             })
             require("mason-lspconfig").setup_handlers({
               function(server_name)
