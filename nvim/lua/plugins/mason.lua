@@ -13,16 +13,27 @@ return {
             local lspconfig = require("lspconfig")
 
             require("mason-lspconfig").setup({
-              ensure_installed = { "volar", "tsserver", "lua_ls", "eslint", "cssls", "emmet_language_server" },
+              ensure_installed = { "tsserver", "lua_ls", "eslint", "cssls", "emmet_language_server" },
             })
             require("mason-lspconfig").setup_handlers({
               function(server_name)
                 local server_config = {}
-                if require("neoconf").get(server_name .. ".disable") then
-                  return
-                end
-                if server_name == "volar" then
-                  server_config.filetypes = { "vue", "typescript", "javascript" }
+                if server_name == "tsserver" then
+                  server_config.init_options = {
+                    plugins = {
+                      {
+                        name = "@vue/typescript-plugin",
+                        location = vim.fn.expand('$HOME/.nvm/versions/node/v21.6.2/lib/node_modules/@vue/typescript-plugin'),
+                        languages = {"javascript", "typescript", "vue"},
+                      },
+                    },
+                  }
+
+                  server_config.filetypes = {
+                    "javascript",
+                    "typescript",
+                    "vue",
+                  }
                 end
                 lspconfig[server_name].setup(server_config)
               end,
@@ -66,5 +77,5 @@ return {
           end,
         }
       }
-	},
-}
+    },
+  }
