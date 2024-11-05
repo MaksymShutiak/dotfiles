@@ -2,16 +2,17 @@ return {
 	"nvimtools/none-ls.nvim",
   dependencies = {
     "nvim-lua/plenary.nvim",
+    "davidmh/cspell.nvim",
   },
   config = function ()
     local null_ls = require("null-ls")
+    local cspell = require("cspell")
 
     null_ls.setup({
       sources = {
-        null_ls.builtins.diagnostics.cspell,
-        -- null_ls.builtins.diagnostics.cspell.with({
-        --   -- extra_args = { "--config", vim.fn.expand("$HOME/.config/nvim/cspell.json") },
-        -- }),
+        cspell.diagnostics.with({
+          extra_args = { "--config", vim.fn.expand("$HOME/.config/nvim/cspell.json") },
+        }),
       },
     })
   end

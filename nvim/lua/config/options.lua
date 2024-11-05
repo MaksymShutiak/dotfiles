@@ -50,3 +50,6 @@ options.updatetime = 100
 options.swapfile = false
 options.completeopt = { "menu", "menuone", "noselect" }
 options.iskeyword:append({ "-", "_" })
+
+options.spelllang = 'en_us'
+options.spell = true

@@ -14,8 +14,11 @@ return {
 			root_folder_modifier = ":t",
 			group_empty = true,
 		},
-		filters = {
-			custom = { "^.git$" },
-		},
+    filters = {
+      dotfiles = false,
+      git_clean = false,
+      no_buffer = false,
+      custom = { 'node_modules' },
+    },
 	},
 }

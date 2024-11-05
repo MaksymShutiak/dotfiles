@@ -13,26 +13,24 @@ return {
             local lspconfig = require("lspconfig")
 
             require("mason-lspconfig").setup({
-              ensure_installed = { "tsserver", "lua_ls", "eslint", "cssls", "emmet_language_server" },
+              ensure_installed = { "ts_ls", "lua_ls", "eslint", "cssls", "emmet_language_server" },
             })
             require("mason-lspconfig").setup_handlers({
               function(server_name)
                 local server_config = {}
-                if server_name == "tsserver" then
+                if server_name == "ts_ls" then
                   server_config.init_options = {
                     plugins = {
                       {
                         name = "@vue/typescript-plugin",
                         location = vim.fn.expand('$HOME/.nvm/versions/node/v21.6.2/lib/node_modules/@vue/typescript-plugin'),
-                        languages = {"javascript", "typescript", "vue"},
+                        languages = {"vue"},
                       },
                     },
                   }
 
                   server_config.filetypes = {
-                    "javascript",
-                    "typescript",
-                    "vue",
+                    'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue',
                   }
                 end
                 lspconfig[server_name].setup(server_config)

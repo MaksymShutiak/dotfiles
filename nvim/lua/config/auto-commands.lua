@@ -11,3 +11,11 @@ autocmd("FileType", {
 	pattern = "css",
 	command = "set filetype=scss",
 })
+
+autocmd({
+  "BufEnter",
+  "BufRead",
+}, {
+	pattern = "*.overlay,*.keymap, *.conf",
+	command = "set filetype=dts",
+})
