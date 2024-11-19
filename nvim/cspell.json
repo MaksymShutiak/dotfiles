@@ -6,6 +6,9 @@
     // words - list of words to be always considered correct
     "words": [
       "alacritty",
+      "RCC", 
+      "PWR",
+      "GPIO",
       "wezterm",
       "lazypath",
       "mkdirp",
