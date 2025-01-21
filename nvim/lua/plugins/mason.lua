@@ -13,18 +13,64 @@ return {
             local lspconfig = require("lspconfig")
 
             require("mason-lspconfig").setup({
-              ensure_installed = { "ts_ls", "lua_ls", "eslint", "cssls", "emmet_language_server" },
+              ensure_installed = { "ts_ls", "lua_ls", "eslint", "cssls", "volar", "emmet_language_server", "emmet_ls" },
             })
             require("mason-lspconfig").setup_handlers({
               function(server_name)
                 local server_config = {}
+                if server_name == "volar" then
+                  server_config.init_options = {
+                    vue = {
+                      hybridMode = false,
+                    },
+                  }
+                  server_config.settings = {
+                    typescript = {
+                      inlayHints = {
+                        enumMemberValues = {
+                          enabled = true,
+                        },
+                        functionLikeReturnTypes = {
+                          enabled = true,
+                        },
+                        propertyDeclarationTypes = {
+                          enabled = true,
+                        },
+                        parameterTypes = {
+                          enabled = true,
+                          suppressWhenArgumentMatchesName = true,
+                        },
+                        variableTypes = {
+                          enabled = true,
+                        },
+                      },
+                    },
+                  }
+                end
                 if server_name == "ts_ls" then
                   server_config.init_options = {
                     plugins = {
                       {
-                        name = "@vue/typescript-plugin",
-                        location = vim.fn.expand('$HOME/.nvm/versions/node/v21.6.2/lib/node_modules/@vue/typescript-plugin'),
-                        languages = {"vue"},
+                        name = '@vue/typescript-plugin',
+                        location = vim.fn.expand('$HOME/.nvm/versions/node/v23.3.0/lib/node_modules/@vue/typescript-plugin'),
+                        languages = { 'vue' },
+                      },
+                    },
+                  }
+                  server_config.settings = {
+                    typescript = {
+                      tsserver = {
+                        useSyntaxServer = false,
+                      },
+                      inlayHints = {
+                        includeInlayParameterNameHints = 'all',
+                        includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                        includeInlayFunctionParameterTypeHints = true,
+                        includeInlayVariableTypeHints = true,
+                        includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+                        includeInlayPropertyDeclarationTypeHints = true,
+                        includeInlayFunctionLikeReturnTypeHints = true,
+                        includeInlayEnumMemberValueHints = true,
                       },
                     },
                   }
