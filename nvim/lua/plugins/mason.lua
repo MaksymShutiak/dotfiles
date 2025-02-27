@@ -18,35 +18,35 @@ return {
             require("mason-lspconfig").setup_handlers({
               function(server_name)
                 local server_config = {}
-                if server_name == "volar" then
-                  server_config.init_options = {
-                    vue = {
-                      hybridMode = false,
-                    },
-                  }
-                  server_config.settings = {
-                    typescript = {
-                      inlayHints = {
-                        enumMemberValues = {
-                          enabled = true,
-                        },
-                        functionLikeReturnTypes = {
-                          enabled = true,
-                        },
-                        propertyDeclarationTypes = {
-                          enabled = true,
-                        },
-                        parameterTypes = {
-                          enabled = true,
-                          suppressWhenArgumentMatchesName = true,
-                        },
-                        variableTypes = {
-                          enabled = true,
-                        },
-                      },
-                    },
-                  }
-                end
+                -- if server_name == "volar" then
+                --   server_config.init_options = {
+                --     vue = {
+                --       hybridMode = false,
+                --     },
+                --   }
+                --   server_config.settings = {
+                --     typescript = {
+                --       inlayHints = {
+                --         enumMemberValues = {
+                --           enabled = true,
+                --         },
+                --         functionLikeReturnTypes = {
+                --           enabled = true,
+                --         },
+                --         propertyDeclarationTypes = {
+                --           enabled = true,
+                --         },
+                --         parameterTypes = {
+                --           enabled = true,
+                --           suppressWhenArgumentMatchesName = true,
+                --         },
+                --         variableTypes = {
+                --           enabled = true,
+                --         },
+                --       },
+                --     },
+                --   }
+                -- end
                 if server_name == "ts_ls" then
                   server_config.init_options = {
                     plugins = {
@@ -57,23 +57,23 @@ return {
                       },
                     },
                   }
-                  server_config.settings = {
-                    typescript = {
-                      tsserver = {
-                        useSyntaxServer = false,
-                      },
-                      inlayHints = {
-                        includeInlayParameterNameHints = 'all',
-                        includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-                        includeInlayFunctionParameterTypeHints = true,
-                        includeInlayVariableTypeHints = true,
-                        includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-                        includeInlayPropertyDeclarationTypeHints = true,
-                        includeInlayFunctionLikeReturnTypeHints = true,
-                        includeInlayEnumMemberValueHints = true,
-                      },
-                    },
-                  }
+                  -- server_config.settings = {
+                  --   typescript = {
+                  --     tsserver = {
+                  --       useSyntaxServer = false,
+                  --     },
+                  --     inlayHints = {
+                  --       includeInlayParameterNameHints = 'all',
+                  --       includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                  --       includeInlayFunctionParameterTypeHints = true,
+                  --       includeInlayVariableTypeHints = true,
+                  --       includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+                  --       includeInlayPropertyDeclarationTypeHints = true,
+                  --       includeInlayFunctionLikeReturnTypeHints = true,
+                  --       includeInlayEnumMemberValueHints = true,
+                  --     },
+                  --   },
+                  -- }
 
                   server_config.filetypes = {
                     'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue',
