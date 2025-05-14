@@ -2,12 +2,12 @@ return {
   'lewis6991/gitsigns.nvim',
   config = function ()
     require('gitsigns').setup({
-      on_attach = function(bufnr)
+      on_attach = function(_buffer)
         local gs = package.loaded.gitsigns
 
         local function map(mode, l, r, opts)
           opts = opts or {}
-          opts.buffer = bufnr
+          opts.buffer = _buffer 
           vim.keymap.set(mode, l, r, opts)
         end
 

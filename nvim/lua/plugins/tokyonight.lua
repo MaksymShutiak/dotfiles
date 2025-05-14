@@ -7,7 +7,7 @@ return {
 
     tokyonight.setup({
       style = "moon",
-      transparent = true, -- Enable this to disable setting the background color
+      -- transparent = true, -- Enable this to disable setting the background color
       terminal_colors = true,
     })
 
