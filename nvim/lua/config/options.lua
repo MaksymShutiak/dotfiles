@@ -48,7 +48,7 @@ options.hidden = true
 options.undofile = true
 options.updatetime = 100
 options.swapfile = false
-options.completeopt = { "menu", "menuone", "noselect" }
+options.completeopt = { "menuone", "noselect", "popup" }
 options.iskeyword:append({ "-", "_" })
 
 options.spelllang = 'en_us'
