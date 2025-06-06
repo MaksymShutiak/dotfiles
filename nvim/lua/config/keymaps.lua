@@ -17,6 +17,3 @@ map("i", "<C-l>", "<right>", bufferOptions)
 map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 map("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 
-map("i", "<c-space>", function()
-  vim.lsp.completion.get()
-end)

@@ -18,9 +18,35 @@ return {
       map("n", "<leader>fr", require("telescope.builtin").quickfix, {})
 
       telescope.setup({
+        defaults = {
+          layout_strategy = "vertical",
+          layout_config = {
+            vertical = { width = 0.9 },
+          },
+          mappings = {
+            i = {
+              ["<C-q>"] = require("telescope.actions").cycle_history_next,
+              ["<C-k>"] = require("telescope.actions").cycle_history_prev,
+            },
+            n = {
+              ["<C-n>"] = require("telescope.actions").move_selection_next,
+              ["<C-p>"] = require("telescope.actions").move_selection_previous,
+            },
+          },
+        },
+
         pickers = {
           find_files = {
             hidden = true,
+            previewer = false,
+          },
+          live_grep = {
+            hidden = true,
+            previewer = false,
+          },
+          buffers = {
+            hidden = true,
+            previewer = false,
           },
           git_files = {
             hidden = true,
