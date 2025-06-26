@@ -66,7 +66,7 @@ return {
             -- for i = 32, 126 do table.insert(chars, string.char(i)) end
             -- client.server_capabilities.completionProvider.triggerCharacters = chars
 
-            vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
+            vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = false })
           end
 
           local opts = { buffer = args.buf }
