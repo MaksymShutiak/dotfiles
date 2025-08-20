@@ -13,17 +13,11 @@ return {
   },
   version = '1.*',
   opts = {
-    keymap = { preset = 'default' },
-
-    default = { 'lsp', 'path', 'snippets', 'buffer' },
-    appearance = {
-      use_nvim_cmp_as_default = true,
-      nerd_font_variant = 'mono'
+    keymap = { 
+      preset = 'default',
+      ['<C-e>'] = {'show', 'hide'}, -- or {}
     },
-    completion = { documentation = { auto_show = false } },
 
-    signature = {
-      enabled = true,
-    },
+    default = { 'lsp', 'path', 'text', 'snippets', 'buffer' },
   },
 }
