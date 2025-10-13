@@ -74,37 +74,8 @@ return {
     dependencies = 'saghen/blink.cmp',
     config = function()
       local autocmd = vim.api.nvim_create_autocmd
-      -- local capabilities = vim.lsp.protocol.make_client_capabilities()
       local capabilities = require('blink.cmp').get_lsp_capabilities();
       capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-      -- vim.lsp.config('ts_ls', {
-      --   capabilities = capabilities,
-      --   init_options = {
-      --     plugins = {
-      --       {
-      --         name = '@vue/typescript-plugin',
-      --         location = vim.fn.expand('$HOME/.nvm/versions/node/v24.3.0/lib/node_modules/@vue/typescript-plugin'),
-      --         languages = {
-      --           'vue'
-      --         },
-      --       },
-      --     },
-      --     preferences = {
-      --       includeCompletionsForModuleExports = true,
-      --       includeCompletionsForImportStatements = true,
-      --       importModuleSpecifierPreference = "non-relative",
-      --     },
-      --   },
-      --   filetypes = {
-      --     'typescript',
-      --     'javascript',
-      --     'javascriptreact',
-      --     'typescriptreact',
-      --     'vue',
-      --     'json',
-      --   }
-      -- })
 
       vim.lsp.config('cssls', {
         capabilities = capabilities,
