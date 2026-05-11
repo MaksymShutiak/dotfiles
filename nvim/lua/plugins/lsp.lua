@@ -6,6 +6,7 @@ local vue_plugin = {
   languages = { 'vue' },
   configNamespace = 'typescript',
 }
+
 local vtsls_config = {
   settings = {
     typescript = {

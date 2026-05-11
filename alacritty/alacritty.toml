@@ -1,25 +1,24 @@
-import = ["/Users/maksymshutiak/.config/alacritty/dracula.toml"]
 
 [env]
 TERM = "xterm-256color"
 
 [font]
-size = 20.0
+size = 18.0
 
 [font.bold]
-family = "UbuntuMono Nerd Font"
+family = "JetBrainsMonoNL Nerd Font"
 style = "Bold"
 
 [font.bold_italic]
-family = "UbuntuMono Nerd Font"
+family = "JetBrainsMonoNL Nerd Font"
 style = "Bold Italic"
 
 [font.italic]
-family = "UbuntuMono Nerd Font"
+family = "JetBrainsMonoNL Nerd Font"
 style = "Italic"
 
 [font.normal]
-family = "UbuntuMono Nerd Font"
+family = "JetBrainsMonoNL Nerd Font"
 style = "Regular"
 
 [font.offset]
@@ -31,3 +30,6 @@ decorations = "none"
 dynamic_padding = false
 opacity = 1.0
 startup_mode = "Maximized"
+
+[general]
+import = ["/Users/ext-maksym.shutiak/.config/alacritty/tokyo-night.toml"]
