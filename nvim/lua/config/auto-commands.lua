@@ -12,11 +12,8 @@ autocmd("FileType", {
 	command = "set filetype=scss",
 })
 
-autocmd({
-  "BufEnter",
-  "BufRead",
-}, {
-	pattern = "*.overlay,*.keymap, *.conf",
+autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = { "*.overlay", "*.keymap", "*.conf" },
 	command = "set filetype=dts",
 })
 
@@ -26,4 +23,12 @@ autocmd('TextYankPost', {
   callback = function()
     vim.hl.on_yank()
   end,
+})
+
+vim.filetype.add({
+  extension = {
+    tf = "terraform",
+    tfvars = "terraform-vars",
+    tfstate = "json",
+  },
 })

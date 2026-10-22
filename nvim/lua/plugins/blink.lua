@@ -18,6 +18,8 @@ return {
       ['<C-e>'] = {'show', 'hide'}, -- or {}
     },
 
-    default = { 'lsp', 'path', 'text', 'snippets', 'buffer' },
+    sources = {
+      default = { 'lsp', 'path', 'snippets', 'buffer' },
+    },
   },
 }

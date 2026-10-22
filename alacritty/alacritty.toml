@@ -26,7 +26,7 @@ x = 0
 y = 5
 
 [window]
-decorations = "none"
+decorations = "Full"
 dynamic_padding = false
 opacity = 1.0
 startup_mode = "Maximized"

@@ -41,34 +41,6 @@ local vtsls_config = {
   filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
 }
 
-local vue_ls_config = {
-  on_init = function(client)
-    client.handlers['tsserver/request'] = function(_, result, context)
-      local clients = vim.lsp.get_clients({ bufnr = context.bufnr, name = 'vtsls' })
-      if #clients == 0 then
-        vim.notify('Could not find `vtsls` lsp client, `vue_ls` would not work without it.', vim.log.levels.ERROR)
-        return
-      end
-      local ts_client = clients[1]
-
-      local param = unpack(result)
-      local id, command, payload = unpack(param)
-      ts_client:exec_cmd({
-        title = 'vue_request_forward', -- You can give title anything as it's used to represent a command in the UI, `:h Client:exec_cmd`
-        command = 'typescript.tsserverRequest',
-        arguments = {
-          command,
-          payload,
-        },
-      }, { bufnr = context.bufnr }, function(_, r)
-          local response_data = { { id, r.body } }
-          ---@diagnostic disable-next-line: param-type-mismatch
-          client:notify('tsserver/response', response_data)
-        end)
-    end
-  end,
-}
-
 return {
   {
     "neovim/nvim-lspconfig",
@@ -87,10 +59,16 @@ return {
       vim.lsp.enable('jsonls')
       -- vim.lsp.enable('ts_ls')
       vim.lsp.enable('eslint')
-      vim.lsp.enable('lua_ls')
+      if vim.fn.executable('lua-language-server') == 1 then
+        vim.lsp.enable('lua_ls')
+      end
       vim.lsp.enable('emmet_language_server')
       vim.lsp.config('vtsls', vtsls_config)
-      vim.lsp.config('vue_ls', vue_ls_config)
+      -- Use the same root as vtsls (lockfile/.git) so workspace packages
+      -- (e.g. packages/* symlinked into node_modules) don't spawn a second vue_ls
+      vim.lsp.config('vue_ls', {
+        root_markers = { 'package.json' },
+      })
       vim.lsp.enable({'vtsls', 'vue_ls'})
 
       vim.diagnostic.config({
@@ -101,15 +79,6 @@ return {
       autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('my.lsp', {}),
         callback = function(args)
-          local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
-          if client:supports_method('textDocument/completion') then
-            -- local chars = {};
-            -- for i = 32, 126 do table.insert(chars, string.char(i)) end
-            -- client.server_capabilities.completionProvider.triggerCharacters = chars
-
-            vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = false })
-          end
-
           local opts = { buffer = args.buf }
           vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
           vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
@@ -129,9 +98,6 @@ return {
             vim.lsp.buf.format()
           end, opts)
 
-          vim.keymap.set("i", "<c-space>", function()
-            vim.lsp.completion.get()
-          end)
         end,
       })
 
